@@ -7,10 +7,6 @@ const propTypes = {
   disabled: bool,
   fullWidth: bool,
   input: shape({}),
-  meta: shape({
-    touched: bool,
-    error: bool,
-  }).isRequired,
   placeholder: string,
   required: bool,
   title: string,
@@ -22,7 +18,7 @@ const propTypes = {
 const defaultProps = {
   color: 'primary',
   disabled: false,
-  fullWidth: true,
+  fullWidth: false,
   input: {},
   placeholder: '',
   required: false,
@@ -36,14 +32,10 @@ const defaultProps = {
  * @description
  */
 const ButtonBase = props => {
-  const {
-    input,
-    title,
-    meta: { touched, error },
-  } = props;
+  const { input, title } = props;
 
   return (
-    <Button {...input} {...props} error={!!touched && !!error}>
+    <Button {...input} {...props}>
       {title}
     </Button>
   );

@@ -2,15 +2,12 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-
-const publicPath = path.join(__dirname, '/public')
-
 module.exports = [
   {
     name: 'client',
     entry: ['babel-polyfill', path.join(__dirname, '/src/client')],
     output: {
-      path: publicPath,
+      path: path.resolve(__dirname, './public'),
       filename: 'client.js',
       publicPath: '/public',
     },
@@ -33,7 +30,7 @@ module.exports = [
       ],
     },
     plugins: [
-      new CleanWebpackPlugin([publicPath]),
+      new CleanWebpackPlugin([path.join(__dirname, './')]),
       new HtmlWebpackPlugin({
         title: 'Short links',
         template: 'index.thtml',
@@ -49,7 +46,7 @@ module.exports = [
       __dirname: true,
     },
     output: {
-      path: publicPath,
+      path: path.join(__dirname, './public'),
       filename: 'server.js',
     },
     module: {

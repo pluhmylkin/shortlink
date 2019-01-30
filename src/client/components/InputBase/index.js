@@ -1,6 +1,6 @@
 import React from 'react';
-import { string, bool, shape } from 'prop-types';
-import {TextField} from '@material-ui/core';
+import { string, bool, shape, func } from 'prop-types';
+import { TextField } from '@material-ui/core';
 
 const propTypes = {
   disabled: bool,
@@ -11,23 +11,25 @@ const propTypes = {
   fullWidth: bool,
   type: string,
   margin: string,
+  onChange: func,
   input: shape({}),
   meta: shape({}),
   helperText: string,
 };
 
 const defaultProps = {
-  title: '',
-  placeholder: '',
+  disabled: false,
+  error: '',
   fullWidth: true,
+  helperText: '',
+  input: {},
+  margin: 'normal',
   meta: {},
+  onChange: () => {},
+  placeholder: '',
   required: false,
   type: 'text',
-  margin: 'normal',
-  input: {},
-  error: '',
-  helperText: '',
-  disabled: false,
+  title: '',
 };
 
 /**
@@ -38,13 +40,20 @@ const InputBase = props => {
     input,
     meta: { touched, error },
     helperText,
+    onChange,
   } = props;
 
-  console.log('props', props)
+  const onChangeInput = e => {
+    const str = e.target.value;
+    props.input.onChange(str);
+    onChange(str);
+  };
+
   return (
     <TextField
       {...input}
       {...props}
+      onChange={onChangeInput}
       helperText={(touched && error) || helperText}
       error={!!touched && !!error}
     />

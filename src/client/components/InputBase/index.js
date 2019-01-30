@@ -33,7 +33,7 @@ const defaultProps = {
 };
 
 /**
- * @description
+ * @description Custom base input
  */
 const InputBase = props => {
   const {

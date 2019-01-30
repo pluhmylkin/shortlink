@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { shape, string } from 'prop-types';
 import axios from 'axios';
-import { withStyles } from '@material-ui/core/styles';
-import { Typography } from '@material-ui/core';
+import { withStyles, Typography } from '@material-ui/core';
 
 import GenerateUrl from '../GenerateUrl';
 import ListUrl from '../ListUrl';
@@ -39,6 +38,9 @@ class Main extends Component {
     this.checkList();
   }
 
+  /**
+   * @description Query to get list of urls
+   */
   checkList = async () => {
     const check = await axios.get(`/api/url/`);
     const list = check.data && check.data.result;
@@ -46,8 +48,8 @@ class Main extends Component {
   };
 
   /**
-   * @description
-   * @param {Object} values
+   * @description Query to create new short url
+   * @param {Object} values values from redux form
    */
   handleGenerateUrl = async values => {
     const check = await axios.post(`/api/url/`, { url: values.url });
@@ -56,6 +58,10 @@ class Main extends Component {
     this.checkList();
   };
 
+  /**
+   * @description Short url's update in state
+   * @param {String} shortUrl new short url
+   */
   handleUpdateShortUrl = shortUrl => this.setState({ shortUrl });
 
   render() {

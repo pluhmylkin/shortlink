@@ -23,7 +23,7 @@ const defaultProps = {
 };
 
 /**
- * @description
+ * @description Form to enter url and get shorturl
  * @param {Object} props
  */
 const GenerateUrl = ({ handleSubmit, onSubmit, url, name, shortUrl, onUpdateShortUrl }) => (

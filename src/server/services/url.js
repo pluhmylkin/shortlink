@@ -1,8 +1,8 @@
 import shortid from 'shortid';
 
 /**
- * @description
- * @param {*} ctx
+ * @description Finding url in the database
+ * @param {Object} ctx
  */
 const findUrl = async ctx => {
   const { db } = ctx;
@@ -28,7 +28,7 @@ const findUrl = async ctx => {
 };
 
 /**
- * @description
+ * @description Checking the existing of url in the database
  * @param {Object} ctx
  */
 export const exist = async ctx => {
@@ -36,8 +36,8 @@ export const exist = async ctx => {
 };
 
 /**
- * @description
- * @param {*} ctx
+ * @description Adding url to database
+ * @param {Object} ctx
  */
 export const add = async ctx => {
   let result = await findUrl(ctx);
@@ -52,8 +52,8 @@ export const add = async ctx => {
 };
 
 /**
- * @description
- * @param {*} ctx
+ * @description Getting list of urls
+ * @param {Object} ctx
  */
 export const list = async ctx => {
   const { db } = ctx;
@@ -74,6 +74,10 @@ export const list = async ctx => {
   ctx.response.body = { result };
 };
 
+/**
+ * @description Getting of url
+ * @param {Object} ctx
+ */
 export const get = async ctx => {
   const { db } = ctx;
   const { shortUrl } = ctx.params;

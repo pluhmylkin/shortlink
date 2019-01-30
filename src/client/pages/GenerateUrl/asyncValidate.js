@@ -1,11 +1,11 @@
 import axios from 'axios';
 
 /**
- * @description Validation for component GenerateUrl
- * @param {Object} values
+ * @description Asynchronous validation for component GenerateUrl
+ * @param {Object} values - params from ReduxForm
  */
-export default async (values) => {
-  const check = await axios.post(`/api/url/exist/`, {url: values.url});
+export default async values => {
+  const check = await axios.post(`/api/url/exist/`, { url: values.url });
   if (check.data.result) {
     return new Promise(() => {
       /* eslint-disable */

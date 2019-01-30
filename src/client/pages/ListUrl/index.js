@@ -1,12 +1,14 @@
 import React from 'react';
 import { shape, string, arrayOf } from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
+import {
+  withStyles,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+  Paper,
+} from '@material-ui/core';
 
 const styles = theme => ({
   root: {
@@ -19,6 +21,22 @@ const styles = theme => ({
   },
 });
 
+const propTypes = {
+  list: arrayOf(
+    shape({
+      url: string,
+      shortUrl: string,
+    })
+  ).isRequired,
+  classes: shape({
+    root: string,
+    table: string,
+  }).isRequired,
+};
+
+/**
+ * @description List of added urls
+ */
 const ListUrl = ({ classes, list }) => (
   <Paper className={classes.root}>
     <Table className={classes.table}>
@@ -46,17 +64,6 @@ const ListUrl = ({ classes, list }) => (
   </Paper>
 );
 
-ListUrl.propTypes = {
-  list: arrayOf(
-    shape({
-      url: string,
-      shortUrl: string,
-    })
-  ).isRequired,
-  classes: shape({
-    root: string,
-    table: string,
-  }).isRequired,
-};
+ListUrl.propTypes = propTypes;
 
 export default withStyles(styles)(ListUrl);

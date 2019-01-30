@@ -10,13 +10,13 @@ const SCHEMA = {
     env: 'NODE_ENV',
   },
   mongodb: { doc: 'Mongo connection string', format: String, default: '', env: 'MONGODB' },
-  http:{
+  http: {
     doc: 'Http listening port',
     format: 'port',
     port: 3008,
     env: 'HTTP_PORT',
     arg: 'http-port',
-  }
+  },
 };
 
 export default () => {

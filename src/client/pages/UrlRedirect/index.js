@@ -3,6 +3,17 @@ import { withRouter } from 'react-router-dom';
 import { shape, string } from 'prop-types';
 import axios from 'axios';
 
+const propTypes = {
+  match: shape({
+    params: shape({
+      shortUrl: string,
+    }),
+  }).isRequired,
+};
+
+/**
+ * @description Page to display real url
+ */
 class UrlRedirect extends Component {
   state = {
     url: {
@@ -30,12 +41,6 @@ class UrlRedirect extends Component {
   }
 }
 
-UrlRedirect.propTypes = {
-  match: shape({
-    params: shape({
-      shortUrl: string,
-    }),
-  }).isRequired,
-};
+UrlRedirect.propTypes = propTypes;
 
 export default withRouter(UrlRedirect);

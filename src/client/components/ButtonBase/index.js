@@ -29,7 +29,7 @@ const defaultProps = {
 };
 
 /**
- * @description
+ * @description Custom base button
  */
 const ButtonBase = props => {
   const { input, title } = props;

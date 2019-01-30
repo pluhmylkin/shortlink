@@ -32,13 +32,13 @@ async function start() {
     { useNewUrlParser: true }
   );
   const db = client.db(DB_NAME);
-  
+
   router.use(koaBody());
-  
+
   app.context.db = db;
   app.context.logger = logger;
   app.context.config = config;
-  routers(router, logger, db)
+  routers(router, logger, db);
 
   app.use(router.routes());
   app.use(router.allowedMethods());
@@ -50,7 +50,7 @@ async function start() {
   await app.listen(config.get('http.port'));
   logger.info(`HTTP server started at port ${config.get('http.port')}.`);
 
-  db.collection('url').createIndex({url:1, shortUrl: 1});
+  db.collection('url').createIndex({ url: 1, shortUrl: 1 });
 }
 
 start();

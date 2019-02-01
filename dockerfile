@@ -1,7 +1,8 @@
 FROM node:8-slim
 
 COPY ./ ./
-RUN yarn install --production
+RUN npm install --production
+RUN npm run build
 
 CMD ["node", "./public/server.js"]
 EXPOSE 3008

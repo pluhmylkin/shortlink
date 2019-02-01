@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "watch": "webpack --progress --mode development --watch",
+    "build": "webpack --mode production",
     "inspect": "kill-port --port 9229 && node --inspect=0.0.0.0:9229 public/server.js",
     "start": "nodemon --delay 80ms --watch public/server.js --exec npm run inspect",
     "lint": "eslint src --fix"

@@ -1,7 +1,7 @@
 FROM node:8-slim
 
 COPY ./ ./
-RUN npm install --production
+RUN npm install
 RUN npm run build
 
 CMD ["node", "./public/server.js"]

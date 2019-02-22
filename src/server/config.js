@@ -10,6 +10,7 @@ const SCHEMA = {
     env: 'NODE_ENV',
   },
   mongodb: { doc: 'Mongo connection string', format: String, default: '', env: 'MONGODB' },
+  host: { doc: 'Host uri', format: String, default: 'http://localhost', env: 'HOST' },
   http: {
     doc: 'Http listening port',
     format: 'port',

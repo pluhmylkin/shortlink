@@ -10,6 +10,7 @@ A project that converts URLs into shortened URLs like bit.ly or t.co by Twitter 
 2. cd shortlink/
 3. docker-compose up
 4. Go to http://localhost:3008
+5. Go to http://localhost:3008/swagger for information about API/
 
 # Technologies
 
